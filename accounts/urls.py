@@ -11,8 +11,12 @@ from django.contrib.auth.views import(
     PasswordResetConfirmView,
     PasswordResetCompleteView
 )
+from .views import UserRegistrationView, EditProfileView
+
 
 urlpatterns = [
+    url(r'^profile/$', EditProfileView.as_view(), name='edit-profile'),
+    url(r'^register/$', UserRegistrationView.as_view(), name='register'),
     url(r'^login/$', LoginView.as_view(template_name='accounts/login.html'), name='login'),
     url(r'^logout/$', LogoutView.as_view(next_page=reverse_lazy('login')), name='logout'),
     url(r'^password_change/$',
